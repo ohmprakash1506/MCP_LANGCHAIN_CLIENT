@@ -15,7 +15,7 @@ const __dirname = path.dirname(__filename);
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
-const MCP_URL = process.env.MCP_SERVER_URL;
+const MCP_URL: any = process.env.MCP_SERVER_URL;
 
 // Define MCP tools as LangChain tools
 const addToCartTool: any = tool(
@@ -59,7 +59,7 @@ const listProductsTool: any = tool(
 const llm = new ChatOllama({ model: 'mistral' });
 
 // Initialize memory for chat history
-const memory = new ConversationBufferMemory({ returnMessages: true });
+const memory = new ConversationTokenBufferMemory({ returnMessages: true });
 
 // Create agent
 const agent = createReactAgent({
